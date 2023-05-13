@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
-import TextForm from "./components/TextForm";
+import DarkMode from "./components/DarkMode";
+// import TextForm from "./components/TextForm";
 import "./App.css";
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
     <>
       <Navbar aboutText="About us" />
       <div className="container">
-        <TextForm heading="Enter the text below" />
+        {/* <TextForm heading="Enter the text below" /> */}
+        <DarkMode/>
       </div>
     </>
   );
