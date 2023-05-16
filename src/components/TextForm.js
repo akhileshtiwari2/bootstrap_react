@@ -18,7 +18,7 @@ export default function TextForm(props) {
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
-  const [text, setText] = useState("Enter Text Here");
+  const [text, setText] = useState("");
   return (
     <>
       <div className="container my-3" style={{color:props.mode==='dark'?'white':'black'}}>
@@ -66,7 +66,8 @@ export default function TextForm(props) {
         </p>
         <p>{0.008 * text.split(" ").length}Minute read</p>
         <h3> Preview</h3>
-        <p>{text}</p>
+        {/* <p>{text}</p> */}
+        <p>{text.length>0?text:"You must enter text in the text area above."}</p>
       </div>
     </>
   );
