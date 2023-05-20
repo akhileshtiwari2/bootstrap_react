@@ -23,6 +23,7 @@ export default function TextForm(props) {
     // 👇️ clear input value
     setText("");
   };
+  
   const [text, setText] = useState("");
   return (
     <>
@@ -75,6 +76,7 @@ export default function TextForm(props) {
         >
           Clear
         </button>
+       
       </div>
 
       <div
@@ -84,7 +86,8 @@ export default function TextForm(props) {
       >
         <h2>Your Text Summary</h2>
         <p>
-          {text.split(" ").length} words and characters {text.length}
+          {/* {text.split(" ").length} words and characters {text.length} */}
+          {text.trim() === '' ? 0 : text.match(/\S+/g).length} words and {text.replace(/\s+/g, '').length} characters
         </p>
         <p>{0.008 * text.split(" ").length}Minute read</p>
         <h3> Preview</h3>
