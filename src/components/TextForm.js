@@ -15,6 +15,7 @@ export default function TextForm(props) {
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to Lower Case", "success");
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -22,6 +23,12 @@ export default function TextForm(props) {
   const handleClearClick = () => {
     // 👇️ clear input value
     setText("");
+    props.showAlert("All Clear", "success");
+  };
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    document.getSelection().removeAllRanges();
+    props.showAlert("Copied to Clipboard!" , "success");
   };
   
   const [text, setText] = useState("");
@@ -47,6 +54,7 @@ export default function TextForm(props) {
         </div>
 
         <button
+          disabled={text.length===0}
           type="submit"
           onClick={speak}
           className="btn btn-primary mb-3 mx-2"
@@ -55,6 +63,7 @@ export default function TextForm(props) {
         </button>
 
         <button
+        disabled={text.length===0}
           type="submit"
           onClick={handleUpClick}
           className="btn btn-primary mb-3 mx-2"
@@ -63,6 +72,7 @@ export default function TextForm(props) {
         </button>
 
         <button
+        disabled={text.length===0}
           type="submit"
           onClick={handleLoClick}
           className="btn btn-primary mb-3 mx-2"
@@ -70,13 +80,21 @@ export default function TextForm(props) {
           Convert to LowerCase
         </button>
         <button
+        disabled={text.length===0}
           type="submit"
           onClick={handleClearClick}
           className="btn btn-primary mb-3 mx-2"
         >
           Clear
         </button>
-       
+        <button
+        disabled={text.length===0}
+          type="submit"
+          onClick={handleCopy}
+          className="btn btn-primary mb-3 mx-2"
+        >
+          Copy Text
+        </button>
       </div>
 
       <div
@@ -86,10 +104,9 @@ export default function TextForm(props) {
       >
         <h2>Your Text Summary</h2>
         <p>
-          {/* {text.split(" ").length} words and characters {text.length} */}
           {text.trim() === '' ? 0 : text.match(/\S+/g).length} words and {text.replace(/\s+/g, '').length} characters
         </p>
-        <p>{0.008 * text.split(" ").length}Minute read</p>
+        <p>{text.trim() === '' ? 0 : 0.008 * text.split(/\S+/g).length} Minute read</p>
         <h3> Preview</h3>
         {/* <p>{text}</p> */}
         <p>

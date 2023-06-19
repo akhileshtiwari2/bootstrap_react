@@ -8,7 +8,8 @@ function Alert(props) {
     );
   };
   return (
-    props.alert && (
+    <div style={{height: '50px'}}>
+   { props.alert && 
       <div
       // className={`container my-3 text-${props.mode==='light'?'dark':'light'}`}>
         className={`alert alert-${props.alert.type} alert-dismissible fade show`}
@@ -17,7 +18,8 @@ function Alert(props) {
         {capitalizeFirstLowercaseRest(props.alert.type)} : {props.alert.msg}
        
       </div>
-    )
+}
+</div>
   );
 }
 
