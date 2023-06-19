@@ -27,10 +27,10 @@ export default function TextForm(props) {
   };
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
-    document.getSelection().removeAllRanges();
-    props.showAlert("Copied to Clipboard!" , "success");
+    // document.getSelection().removeAllRanges();
+    props.showAlert("Copied to Clipboard!", "success");
   };
-  
+
   const [text, setText] = useState("");
   return (
     <>
@@ -54,7 +54,7 @@ export default function TextForm(props) {
         </div>
 
         <button
-          disabled={text.length===0}
+          disabled={text.length === 0}
           type="submit"
           onClick={speak}
           className="btn btn-primary mb-3 mx-2"
@@ -63,7 +63,7 @@ export default function TextForm(props) {
         </button>
 
         <button
-        disabled={text.length===0}
+          disabled={text.length === 0}
           type="submit"
           onClick={handleUpClick}
           className="btn btn-primary mb-3 mx-2"
@@ -72,7 +72,7 @@ export default function TextForm(props) {
         </button>
 
         <button
-        disabled={text.length===0}
+          disabled={text.length === 0}
           type="submit"
           onClick={handleLoClick}
           className="btn btn-primary mb-3 mx-2"
@@ -80,7 +80,7 @@ export default function TextForm(props) {
           Convert to LowerCase
         </button>
         <button
-        disabled={text.length===0}
+          disabled={text.length === 0}
           type="submit"
           onClick={handleClearClick}
           className="btn btn-primary mb-3 mx-2"
@@ -88,7 +88,7 @@ export default function TextForm(props) {
           Clear
         </button>
         <button
-        disabled={text.length===0}
+          disabled={text.length === 0}
           type="submit"
           onClick={handleCopy}
           className="btn btn-primary mb-3 mx-2"
@@ -104,9 +104,13 @@ export default function TextForm(props) {
       >
         <h2>Your Text Summary</h2>
         <p>
-          {text.trim() === '' ? 0 : text.match(/\S+/g).length} words and {text.replace(/\s+/g, '').length} characters
+          {text.trim() === "" ? 0 : text.match(/\S+/g).length} words and{" "}
+          {text.replace(/\s+/g, "").length} characters
         </p>
-        <p>{text.trim() === '' ? 0 : 0.008 * text.split(/\S+/g).length} Minute read</p>
+        <p>
+          {text.trim() === "" ? 0 : 0.008 * text.split(/\S+/g).length} Minute
+          read
+        </p>
         <h3> Preview</h3>
         {/* <p>{text}</p> */}
         <p>
