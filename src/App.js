@@ -38,7 +38,7 @@ function App() {
         <Alert alert={alert} />
         <div className="container">
           <Routes>
-            <Route exact path="/DarkMode" element={<DarkMode />} />
+            <Route exact path="/DarkMode" element={<DarkMode mode={mode} />} />
             <Route
               exact
               path="/"
